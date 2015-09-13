@@ -25,6 +25,8 @@ class GeoLookupTest extends FunSuite with ShouldMatchers
   test("GeoLookup, hit") {
     val lookup = GeoLookup.fromCityFile(new File(getClass.getClassLoader.getResource("GeoIP2-City-Test.mmdb").getPath))
     val result = lookup.lookup("81.2.69.160")
+    result.continentCode should be(Some("EU"))
+    result.continentName should be(Some("Europe"))
     result.countryIsoCode should be(Some("GB"))
     result.countryName should be(Some("United Kingdom"))
     result.regionIsoCode should be(Some("ENG"))
@@ -36,6 +38,8 @@ class GeoLookupTest extends FunSuite with ShouldMatchers
   test("GeoLookup, miss") {
     val lookup = GeoLookup.fromCityFile(new File(getClass.getClassLoader.getResource("GeoIP2-City-Test.mmdb").getPath))
     val result = lookup.lookup("1.1.1.1")
+    result.continentCode should be(None)
+    result.continentName should be(None)
     result.countryIsoCode should be(None)
     result.countryName should be(None)
     result.regionIsoCode should be(None)

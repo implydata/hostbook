@@ -20,6 +20,10 @@ import com.maxmind.geoip2.model.CityResponse
 
 class GeoResult(val cityResponse: Option[CityResponse])
 {
+  def continentCode: Option[String] = cityResponse.flatMap(x => Option(x.getContinent.getCode))
+
+  def continentName: Option[String] = cityResponse.flatMap(x => Option(x.getContinent.getName))
+
   def countryName: Option[String] = cityResponse.flatMap(x => Option(x.getCountry.getName))
 
   def countryIsoCode: Option[String] = cityResponse.flatMap(x => Option(x.getCountry.getIsoCode))
