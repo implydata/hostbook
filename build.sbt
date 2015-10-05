@@ -28,7 +28,30 @@ licenses := Seq("Apache License, Version 2.0" -> url("http://www.apache.org/lice
 
 homepage := Some(url("https://github.com/implydata/hostbook"))
 
+publishMavenStyle := true
+
+publishTo := Some("releases" at "https://oss.sonatype.org/service/local/staging/deploy/maven2/")
+
+pomIncludeRepository := { _ => false }
+
+pomExtra := (
+  <scm>
+    <url>https://github.com/implydata/hostbook.git</url>
+    <connection>scm:git:git@github.com:implydata/hostbook.git</connection>
+  </scm>
+    <developers>
+      <developer>
+        <name>Gian Merlino</name>
+        <organization>Imply Data Inc.</organization>
+        <organizationUrl>http://imply.io/</organizationUrl>
+      </developer>
+    </developers>)
+
 releaseSettings
+
+publishArtifact in Test := false
+
+ReleaseKeys.publishArtifactsAction := PgpKeys.publishSigned.value
 
 libraryDependencies ++= Seq(
   "com.metamx" %% "scala-util" % "1.11.3" exclude("log4j", "log4j") force(),
