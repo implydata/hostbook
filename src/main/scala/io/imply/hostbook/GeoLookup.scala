@@ -78,6 +78,7 @@ object GeoLookup extends Logging
   def fromFreeDownloadableCityDatabase(cityFile: File): GeoLookup = {
     if (!cityFile.exists()) {
       log.info("Downloading database from[%s] to local file[%s].", freeDownloadableCityDatabase, cityFile)
+      log.info("GeoLite2 data created by MaxMind, available from https://www.maxmind.com")
 
       new File(cityFile.toString + ".tmp." + UUID.randomUUID()).withFinally(_.delete()) { tmpFile =>
         new FileOutputStream(tmpFile).withFinally(_.close()) { out =>
