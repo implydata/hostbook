@@ -66,7 +66,9 @@ class GeoLookup(
 
 object GeoLookup extends Logging
 {
-  val freeDownloadableCityDatabase = "http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.mmdb.gz"
+  // This is provided under https://creativecommons.org/licenses/by-sa/4.0/legalcode
+  // Please read https://dev.maxmind.com/geoip/geoip2/geolite2/
+  val freeDownloadableCityDatabase = "https://s3.amazonaws.com/static.imply.io/geolite/GeoLite2-City.mmdb.gz"
 
   def fromCityFile(cityFile: File): GeoLookup = {
     val reader = new DatabaseReader.Builder(cityFile).fileMode(FileMode.MEMORY_MAPPED).build()

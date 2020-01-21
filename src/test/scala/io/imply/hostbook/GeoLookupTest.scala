@@ -23,7 +23,7 @@ import org.scalatest.ShouldMatchers
 class GeoLookupTest extends FunSuite with ShouldMatchers
 {
   test("GeoLookup, hit") {
-    val lookup = GeoLookup.fromCityFile(new File(getClass.getClassLoader.getResource("GeoIP2-City-Test.mmdb").getPath))
+    val lookup = GeoLookup.fromFreeDownloadableCityDatabase(new File(getClass.getClassLoader.getResource("GeoIP2-City-Test.mmdb").getPath + ".tmp"))
     val result = lookup.lookup("81.2.69.160")
     result.continentCode should be(Some("EU"))
     result.continentName should be(Some("Europe"))
