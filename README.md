@@ -5,7 +5,7 @@
 This is a Scala library that helps you do GeoIP lookups with the
 [MaxMind GeoLite2](https://www.maxmind.com/en/geoip2-services-and-databases) databases
 
-This service includes GeoLite2 data created by MaxMind, available from [Maxmind](http://www.maxmind.com)
+NOTE: The GeoLite2 data created by MaxMind, available from [Maxmind](http://www.maxmind.com) is not downloable at the link provided in this repository. Please download the database directly from Maxmind after reading and agreeing to their terms of service
 
 ```scala
 import io.imply.hostbook.GeoLookup
